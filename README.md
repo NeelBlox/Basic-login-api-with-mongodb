@@ -1,16 +1,106 @@
-To test this api locally with your own mongodb URI link in any studio code or command prompt:
+## Live Demo
 
-Fork this repository and download it
+https://basic-login-api-with-mongodb.onrender.com/docs
 
-Create your own mongodb atlas database and replace collection names with whatever yours are in the code!
+# Basic Login API with MongoDB
 
-run pip install -r requirements.txt in the same folder
+A simple FastAPI authentication API using:
 
-If running locally you can directly put the link in the MONGO_URI variable otherwise use a environment variable!
+- FastAPI
+- MongoDB Atlas
+- Argon2 password hashing
+- Login cooldown protection
+- Environment variable support
 
-Finally if running locally add the following line of code at the end!
+## Features
 
-if __name__=="__main__":
+- User login endpoint
+- Password hashing with Argon2
+- MongoDB Atlas integration
+- 10-second login cooldown
+- Deployable on Render
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+cd <repository-name>
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## MongoDB Setup
+
+Create a MongoDB Atlas cluster and database.
+
+Update the collection names in the code if necessary.
+
+### Environment Variables
+
+Create a `.env` file:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+```
+
+Or configure the environment variable through your hosting provider.
+
+## Running Locally
+
+Add the following to the bottom of `main.py`:
+
+```python
+if __name__ == "__main__":
     uvicorn.run(app)
+```
 
-If one needs help hosting this api for free for a small hobby project let me know in Issues/Discussions.
+Start the API:
+
+```bash
+python main.py
+```
+
+## API Endpoints
+
+### GET /
+
+Returns API status.
+
+### POST /login
+
+Request body:
+
+```json
+{
+  "username": "user1",
+  "password": "password"
+}
+```
+
+Example response:
+
+```json
+{
+  "success": true,
+  "message": "Successfully logged in!"
+}
+```
+
+## Deployment
+
+This project can be deployed for free on platforms such as:
+( if help required kindly ask it in the discussions or issues tab! )
+
+- Render
+- Railway
+- Fly.io
+
+## License
+
+Open source and available under the MIT License.
